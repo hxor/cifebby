@@ -54,7 +54,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('name') ?> <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><?= anchor('/home/profile', 'Profile')  ?></li>
                     <li><?= anchor('/auth/logout', 'Logout')  ?></li>

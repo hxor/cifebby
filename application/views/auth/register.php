@@ -64,27 +64,20 @@
                     <div class="panel-heading">Register</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="">
-
+						<?= form_open('auth/register', ['class' => 'form-horizontal']); ?>
                             <div class="form-group">
                                 <label for="name" class="col-md-4 control-label">Name</label>
-
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-                                    <span class="help-block">
-                                        <strong></strong>
-                                    </span>
+									<?= form_input('name', $input->name, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus'])  ?>
+                                    <?= form_error('name') ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="" required>
-                                    <span class="help-block">
-                                        <strong></strong>
-                                    </span>
+									<?= form_input('email', $input->email, ['class' => 'form-control', 'required' => 'required'])  ?>
+                                    <?= form_error('email') ?>
                                 </div>
                             </div>
 
@@ -92,10 +85,8 @@
                                 <label for="password" class="col-md-4 control-label">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-                                    <span class="help-block">
-                                        <strong></strong>
-                                    </span>
+									<?= form_password('password', $input->email, ['class' => 'form-control', 'required' => 'required'])  ?>
+                                    <?= form_error('password') ?>
                                 </div>
                             </div>
 
@@ -106,7 +97,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+						<?= form_close(); ?>
                     </div>
                 </div>
             </div>
