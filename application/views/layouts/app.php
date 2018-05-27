@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="<?= site_url('/') ?>assets/favicon.ico">
 
-    <title>Forum - Ci Febby</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= site_url('/') ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,25 +46,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ci Forum</a>
+          <a class="navbar-brand" href="#">Forum</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><?= anchor('/home', 'Home') ?></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><?= anchor('/auth/login', 'Login') ?></li>
-            <li><?= anchor('/auth/register', 'Register') ?></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Username <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><?= anchor('/home/profile', 'Profile')  ?></li>
+                    <li><?= anchor('/auth/logout', 'Logout')  ?></li>
+                  </ul>
+                </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Forum Cibby</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-      </div>
-
+        <?php $this->load->view($main_view);  ?>
     </div> <!-- /container -->
 
 
