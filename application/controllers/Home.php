@@ -12,6 +12,7 @@ class Home extends CI_Controller {
 		if (!$login) {
 			redirect('/');
 		}
+		$this->load->model('User_model', 'user', true);
 	}
 
     public function index()
@@ -22,8 +23,27 @@ class Home extends CI_Controller {
 
     public function profile()
     {
-        $main_view = 'pages/home/profile';
-        $this->load->view($this->layout, compact('main_view'));
+		$user = $this->user->where('email', $this->session->userdata('email'));
+
+		if (!$user) {
+			redirect('/home');
+		}
+
+		if (!$_POST) {
+			$input = (object) $user;
+		} else {
+			$input = (object) $this->input->post();
+		}
+
+		if (!$this->user->validate()) {
+			$main_view = 'pages/home/profile';
+			$this->load->view($this->layout, compact('main_view', 'input'));
+			return;
+		}
+
+		$this->user->update($user->id, $input);
+		redirect('/home/profile');
+        
     }
 
 }
