@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `body` text COLLATE utf8_unicode_ci NOT NULL,
@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `user_id`, `body`, `date`) VALUES
-(0, 6, 1, 'Test Comment', '0000-00-00 00:00:00'),
-(1, 1, 3, 'Maybe there is another approach. But I always love to use str_random() function that is a core function of PHP.\r\n\r\nYou can try this-\r\n\r\nstr_random(32);', '2018-05-27 17:00:00'),
-(2, 2, 1, 'Make sure that you have right route type. Normally it happens if your route type is not matching.', '2018-05-27 17:00:00');
+(1, 3, 1, 'Test Comment', '0000-00-00 00:00:00'),
+(2, 1, 3, 'Maybe there is another approach. But I always love to use str_random() function that is a core function of PHP.\r\n\r\nYou can try this-\r\n\r\nstr_random(32);', '2018-05-27 17:00:00'),
+(3, 2, 1, 'Make sure that you have right route type. Normally it happens if your route type is not matching.', '2018-05-27 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 INSERT INTO `posts` (`id`, `user_id`, `body`, `date`) VALUES
 (1, 1, 'Hello\r\n\r\nHow to generate 32 bit random token / key in Laravel 5.6?', '2018-05-27 17:00:00'),
 (2, 2, 'when i send post request to using it in api it give me MethodNotAllowedHttpException After searching the solution is add exception in App\\Http\\Middleware\\VerifyCsrfToken.php how can i add URI ??\r\n\r\nthanks', '2018-05-27 17:00:00'),
-(6, 1, 'This is trying to update status', '0000-00-00 00:00:00');
+(3, 1, 'This is trying to update status', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

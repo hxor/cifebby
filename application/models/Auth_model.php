@@ -116,8 +116,8 @@ class Auth_model extends CI_Model {
 			$sess_data = [
 				'login' => true,
 				'id' => $user->id,
-				'name' => $user->name,
-				'email' => $user->email
+				'name' => $input->name,
+				'email' => $input->email
 			];
 
 			$this->session->set_userdata($sess_data);
