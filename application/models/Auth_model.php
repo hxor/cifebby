@@ -94,6 +94,7 @@ class Auth_model extends CI_Model {
 		if (count($user)) {
 			$sess_data = [
 				'login' => true,
+				'id' => $user->id,
 				'name' => $user->name,
 				'email' => $user->email
 			];
@@ -114,6 +115,7 @@ class Auth_model extends CI_Model {
 		if (count($user)) {
 			$sess_data = [
 				'login' => true,
+				'id' => $user->id,
 				'name' => $user->name,
 				'email' => $user->email
 			];

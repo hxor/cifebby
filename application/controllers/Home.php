@@ -13,13 +13,59 @@ class Home extends CI_Controller {
 			redirect('/');
 		}
 		$this->load->model('User_model', 'user', true);
+		$this->load->model('Post_model', 'post', true);
+		$this->load->model('Comment_model', 'comment', true);
 	}
 
     public function index()
     {
+		$inputComment = (object) $this->comment->getDefaultValues();
+		$posts = $this->post->all();
+		$input = (object) $this->post->getDefaultValues();
+
         $main_view = 'pages/home/index';
-        $this->load->view($this->layout, compact('main_view'));
-    }
+        $this->load->view($this->layout, compact('main_view', 'posts', 'input', 'inputComment'));
+	}
+	
+	public function status()
+	{
+		if (!$_POST) {
+			$inputComment = (object) $this->comment->getDefaultValues();
+			$input = (object) $this->post->getDefaultValues();
+		} else {
+			$inputComment = (object) $this->comment->getDefaultValues();
+			$input = (object) $this->input->post();
+		}
+
+		if (!$this->post->validate()) {
+			$posts = $this->post->all();
+			$main_view = 'pages/home/index';
+			$this->load->view($this->layout, compact('main_view', 'posts', 'input', 'inputComment'));
+			return;
+		}
+
+		$this->post->insert($input);
+		redirect('home');
+	}
+
+	public function comment()
+	{
+		if (!$_POST) {
+			$inputComment = (object) $this->comment->getDefaultValues();
+		} else {
+			$inputComment = (object) $this->input->post();
+		}
+
+		if (!$this->comment->validate()) {
+			$posts = $this->post->all();
+			$main_view = 'pages/home/index';
+			$this->load->view($this->layout, compact('main_view', 'posts', 'inputComment'));
+			return;
+		}
+
+		$this->comment->insert($inputComment);
+		redirect('home');
+	}
 
     public function profile()
     {
